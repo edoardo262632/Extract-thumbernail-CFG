@@ -1,0 +1,1 @@
+# Extract-thumbernail-CFG
