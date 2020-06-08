@@ -30,9 +30,15 @@ Python3 project.py file_name [Options]
 All available options are:
 
   -h, --help      show this help message and exit
+  
   -d DSTFOLDER    Folder in which to store the images, the folder is created if does not already exists. By default ./thumbnails folder is used.
+  
   -e              Perform a more accurate analyses of the binary.
+  
   -n              Return a non normalized version of the graph.
+  
   -p              Keep the proportion of the original picture when resizing it.
+  
   -f FORMAT       Format in which store the picture. By default png. Accepted png,jpeg,jpg,gif.
+  
   -s SIZE         Size of the thumbnail in pixels. By default 300.
