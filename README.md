@@ -4,13 +4,13 @@
 The tool take as input a binary file and extract from it the Control Flow Graph of each function and store them as images.
 By default the image are stored inside a new folder called thumbnail in a png format.
 The name of the function concateneted with "\_cfg" is used as name of the picture.
-The block are divided in for different group based on the predecessors and successors:
+The block are divided in for different group based on the predecessors and successors (is possible to set the color inside the file library.py):
 - Green are transition blocks
 - Yellow are if block, they present more then one successors
 - Red are block without a successor inside the function, they can be either return block or blocks that call another function
 - Blue are block with more then one predecessor and at least one of them has bigger addresses than the analyzed block; mainly identifies loop
 
-If the binary is a position-indipendent executable a warning will pop-up. In this case, based on the type of analyses and the normalization of the graph or not, is possible to obtain different classification result.
+N.B. If the binary is a position-indipendent executable a warning will pop-up. In this case, based on the type of analyses and the normalization of the graph or not, is possible to obtain different classification result.
 
 
 ## Requirements
