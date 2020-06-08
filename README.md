@@ -16,7 +16,7 @@ N.B. If the binary is a position-indipendent executable a warning will pop-up. I
 ## Requirements
 Ther required python library can be installed with
 ```
-pip3 install angrutils
+pip3 install angr-utils
 pip3 install bingraphvis
 pip3 install Image
 pip3 install argparse
