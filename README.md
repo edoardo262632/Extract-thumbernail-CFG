@@ -10,8 +10,10 @@ The block are divided in for different group based on the predecessors and succe
 - Red are block without a successor inside the function, they can be either return block or blocks that call another function
 - Blue are block with more then one predecessor and at least one of them has bigger addresses than the analyzed block; mainly identifies loop
 
-N.B. If the binary is a position-indipendent executable a warning will pop-up. In this case, based on the type of analyses and the normalization of the graph or not, is possible to obtain different classification result.
+Notice that the analysis underlying this choices is heuristic and therefore might be not always correct. Moreover, the type of analyses performed over the binary and the normalization of the graph can affect the final result.
 
+
+N.B. If the binary is a position-indipendent executable a warning will pop-up, which will not affect the execution.
 
 ## Requirements
 Ther required python library can be installed with
