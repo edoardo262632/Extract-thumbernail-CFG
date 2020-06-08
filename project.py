@@ -4,7 +4,6 @@ from argparse import *
 import sys
 import os
 import library
-from graphviz import Digraph
 
 def analyze(b, folder, emulate,normalize,proportioned,max_size,format):
 
@@ -45,23 +44,25 @@ def analyze(b, folder, emulate,normalize,proportioned,max_size,format):
         img.save("%s/%s_cfg.%s" % (folder, func.name,format))
 
 
-usage = '''Python3 " + sys.argv[0] + " input_file [options]
-Use the option -h or --help for a more accurate explaination'''
+
+
+
+usage = "Python3 " + sys.argv[0] + " input_file [options]\nUse the option -h or --help for a more detailed explaination"
 parser = ArgumentParser(usage=usage)
 
 parser.add_argument("file_name",
                     help="binary that has to be analyzed")
 
 parser.add_argument('-d', dest='dstFolder', default="./thumbnails",
-                help='Folder in which to store the images, the folder is created if does not already exists. By default the provided file name is used.')
+                help='Folder in which to store the images, the folder is created if does not already exists. By default thumbnails folder is used.')
 
 # Arguments concerning analyses
 parser.add_argument("-e", dest="emulate", default=False,
                     action='store_const', const=True,
-                    help="Perform a more accurate analyses of the binary. By default False.")
+                    help="Perform a more accurate analyses of the binary.")
 parser.add_argument("-n", dest="normalize",default=True,
                     action='store_const', const=False,
-                    help="return a normalized version of the graph. By default True.")
+                    help="Return a non normalized version of the graph.")
 
 # Arguments concerning Image format
 parser.add_argument("-p", dest="proportioned", default=False,
@@ -69,11 +70,12 @@ parser.add_argument("-p", dest="proportioned", default=False,
                 help="Keep the proportion of the original picture when resizing it. By default False.")
 parser.add_argument("-f", dest="format", default="png",
                 help="Format in which store the picture. By default png. Accepted png,jpeg,jpg,gif.")
-parser.add_argument("-s", dest="size",type=int,default=400,
-                help="Size of the thumbnail in pixels. By default 400")
+parser.add_argument("-s", dest="size",type=int,default=300,
+                help="Size of the thumbnail in pixels. By default 300")
 
 # Check that the essential arguments are provided
 args = parser.parse_args()
+
 
 os.system('mkdir -p %s' % args.dstFolder)
 

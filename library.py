@@ -1,7 +1,3 @@
-import networkx
-
-from collections import defaultdict
-
 from bingraphvis import *
 from bingraphvis.angr import *
 from bingraphvis.angr.x86 import *
