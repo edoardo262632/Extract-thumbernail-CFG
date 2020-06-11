@@ -5,6 +5,8 @@ import sys
 import os
 import library
 
+Image.MAX_IMAGE_PIXELS = None
+
 def analyze(b, folder, emulate,normalize,proportioned,max_size,format):
 
     #Perform the analyses to create the CFG
