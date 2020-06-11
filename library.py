@@ -54,30 +54,37 @@ class AngrAsm(Content):
                 '_addr': ins.address,
             })
 
+        # Added code to the library class to render the blocks
         loop = False
         lens = 0
         lenp = 0
+        # Examinate all the predecessor inside the function to control if a loop could be present
         for x in node.predecessors:
             if node.function_address != x.function_address:
                     continue
             if x.addr >= node.addr:
                 loop = True
             lenp += 1
+        # Count the successor inside the same function
         for x in node.successors:
             if node.function_address != x.function_address:
                     continue
             lens += 1
 
         if lenp >= 2 and loop:
+            #Color of the loop
             n.fillcolor = 'blue'
             n.style = "filled"
         elif lens == 0:
+            #Color of the return or block the call another function
             n.fillcolor = 'red'
             n.style = "filled"
         elif lens == 1:
+            #Color of transition blocks
             n.fillcolor = 'green'
             n.style = "filled"
         else:
+            #Color of block if blocks
             n.fillcolor = 'yellow'
             n.style = "filled"
 

@@ -22,8 +22,6 @@ def analyze(b, folder, emulate,normalize,proportioned,max_size,format):
     # Create the picture in the desired format and then resize it
     set_plot_style('thick')
     for addr,func in b.kb.functions.items():
-        #dot = Digraph(comment='The Round Table' ,graph_attr=cfg.graph)
-        #dot.render('test-output/round-table.gv', view=True)
         library.plot_cfg(cfg, "%s/%s_cfg" % (folder, func.name),format = format, func_addr={addr:True})
         img = Image.open("%s/%s_cfg.%s" % (folder, func.name,format))
         if proportioned:
