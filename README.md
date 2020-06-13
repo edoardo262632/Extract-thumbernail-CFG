@@ -25,8 +25,11 @@ pip3 install argparse
 ```
 
 N.B. In some operative system, when trying to run the program the error:
+
 `FileNotFoundError: [Errno 2] "dot" not found in path` 
+
 which is due to the absence of the library graphviz in the system, which is possible to install through 
+
 `sudo apt install graphviz`
 ## How to use
 
