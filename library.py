@@ -54,6 +54,11 @@ class AngrAsm(Content):
                 '_addr': ins.address,
             })
 
+        if insns[len(insns)-1].mnemonic == "nop":
+            for x in insns:
+                print("nop:" ,x)
+
+        #print(insns[len(insns)-1])
         # Added code to the library class to render the blocks
         loop = False
         lens = 0
@@ -70,35 +75,46 @@ class AngrAsm(Content):
             if node.function_address != x.function_address:
                     continue
             lens += 1
-
-        if lenp >= 2 and loop:
+        # Retrives the loops that start from the exit condition after the loop block
+        if lens > 1 and not loop:
+            for x in node.successors:
+                if node.function_address == x.function_address:
+                    if node.addr > x.addr:
+                        loop = True
+        if lenp > 1 and loop:
             #Color of the loop
             n.fillcolor = 'blue'
-            n.style = "filled"
-        elif lens == 0:
-            #Color of the return or block the call another function
-            n.fillcolor = 'red'
             n.style = "filled"
         elif lens == 1:
             #Color of transition blocks
             n.fillcolor = 'green'
             n.style = "filled"
-        else:
+        elif lens > 1:
             #Color of block if blocks
             n.fillcolor = 'yellow'
             n.style = "filled"
+        elif insns[len(insns)-1].mnemonic == "call":
+            n.fillcolor = 'red'
+            n.style = "filled"
+        elif insns[len(insns)-1].mnemonic == "ret":
+            n.fillcolor = 'black'
+            n.style = "filled"
+        else:
+            n.fillcolor = 'purple'
+            n.style = "filled"
 
 
-def plot_cfg(cfg, fname, format="png", state=None, asminst=False, vexinst=False, func_addr=None, remove_imports=True, remove_path_terminator=True, remove_simprocedures=False, debug_info=False, comments=True, color_depth=False):
-    vis = AngrVisFactory().default_cfg_pipeline(cfg, asminst=asminst, vexinst=vexinst, comments=comments)
+#Library function needed to call our implementation of the class AngrAsm and to color the graph
+def plot_cfg(cfg, fname, format="png", func_addr=None):
+    vis = AngrVisFactory().default_cfg_pipeline(cfg, asminst=False, vexinst=False, comments=False)
     project = cfg.project
-    if remove_imports:
-        vis.add_transformer(AngrRemoveImports(cfg.project))
-    if remove_simprocedures:
-        vis.add_transformer(AngrRemoveSimProcedures())
-    if func_addr:
-        vis.add_transformer(AngrFilterNodes(lambda node: node.obj.function_address in func_addr and func_addr[node.obj.function_address]))
-    vis.add_clusterer(ColorDepthClusterer(palette='greens'))
+    # Remove the imports from the graph
+    vis.add_transformer(AngrRemoveImports(cfg.project))
+
+    #Select only the node of the graph related to the analyzed function
+    vis.add_transformer(AngrFilterNodes(lambda node: node.obj.function_address in func_addr and func_addr[node.obj.function_address]))
+
+    #Add a member of the customized class
     vis.add_content(AngrAsm(project))
     if project.arch.name in ('ARM', 'ARMEL', 'ARMHF'):
         vis.add_edge_annotator(AngrColorEdgesAsmArm())
