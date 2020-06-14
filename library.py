@@ -54,11 +54,7 @@ class AngrAsm(Content):
                 '_addr': ins.address,
             })
 
-        if insns[len(insns)-1].mnemonic == "nop":
-            for x in insns:
-                print("nop:" ,x)
 
-        #print(insns[len(insns)-1])
         # Added code to the library class to render the blocks
         loop = False
         lens = 0

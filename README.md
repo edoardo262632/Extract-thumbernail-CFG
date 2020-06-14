@@ -6,14 +6,13 @@ By default the image are stored inside a new folder called thumbnail in a png fo
 The name of the function concateneted with "\_cfg" is used as name of the picture.
 The block are divided in for different group based on the predecessors and successors (is possible to set the color inside the file library.py):
 - Green are transition blocks
-- Yellow are if block, they present more then one successors
+- Yellow are "if" block; they present more then one successor
 - Blue are block which mainly identify loops, the evaluation is address based over the predecessors and successors
 - Red are blocks which end with a call operation
 - Black are blocks which end with a ret operation
 - Purple is used for block which does not fall in any other category, usually ends with nop operation to align the code and do not present control flow instruction inside the block
 
 Notice that the analysis underlying this choices is heuristic and therefore might be not always correct. Moreover, the options -e and -p which affect the analyses performed can affect the final result.
-
 
 N.B. If the binary is a position-indipendent executable a warning will pop-up, which will not affect the execution.
 
