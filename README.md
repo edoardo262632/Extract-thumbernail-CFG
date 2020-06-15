@@ -57,7 +57,8 @@ All available options are:
 
 # Examples
 
-As follow is possible to see part of the result of the tool when applied over the /bin/ls file with the option -e (which perform a more accurate analyses):
+As follow is possible to see part of the result of the tool when applied over the /bin/ls file with the option -e (which perform a more accurate analyses).
+
 Command: `python3 project.py /bin/ls -e`
 
 ![example_1](./img/sub_40a1a0_cfg.png "Example_1")
@@ -67,7 +68,7 @@ Command: `python3 project.py /bin/ls -e`
 ![example_3](./img/sub_40ffa0_cfg.png "Example_3")
 
 
-As follow an example of the result when increasing the size
+As follow an example of the result when increasing the size.
 Command: `python3 project.py /bin/ls -e -s 500`
 
 ![example_4](./img/sub_404df0_cfg.png "Example_4")
