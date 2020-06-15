@@ -69,6 +69,7 @@ Command: `python3 project.py /bin/ls -e`
 
 
 As follow an example of the result when increasing the size.
+
 Command: `python3 project.py /bin/ls -e -s 500`
 
 ![example_4](./img/sub_404df0_cfg.png "Example_4")
