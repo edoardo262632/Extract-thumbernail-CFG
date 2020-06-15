@@ -27,9 +27,9 @@ pip3 install argparse
 
 N.B. In some operative system, when trying to run the program the error:
 
-`FileNotFoundError: [Errno 2] "dot" not found in path` 
+`FileNotFoundError: [Errno 2] "dot" not found in path`
 
-which is due to the absence of the library graphviz in the system, which is possible to install through 
+which is due to the absence of the library graphviz in the system, which is possible to install through
 
 `sudo apt install graphviz`
 ## How to use
@@ -53,3 +53,21 @@ All available options are:
   -f FORMAT       Format in which store the picture. By default png. Accepted png,jpeg,jpg,gif.
 
   -s SIZE         Size of the thumbnail in pixels. By default 300.
+
+
+# Examples
+
+As follow is possible to see part of the result of the tool when applied over the /bin/ls file with the option -e (which perform a more accurate analyses):
+Command: `python3 project.py /bin/ls -e`
+
+![example_1](./img/sub_40a1a0_cfg.png "Example_1")
+
+![example_2](./img/sub_40b8c0_cfg.png "Example_2")
+
+![example_3](./img/sub_40ffa0_cfg.png "Example_3")
+
+
+As follow an example of the result when increasing the size
+Command: `python3 project.py /bin/ls -e -s 500`
+
+![example_4](./img/sub_404df0_cfg.png "Example_4")

@@ -77,7 +77,11 @@ class AngrAsm(Content):
                 if node.function_address == x.function_address:
                     if node.addr > x.addr:
                         loop = True
-        if lenp > 1 and loop:
+                        
+        if insns[len(insns)-1].mnemonic == "ret":
+            n.fillcolor = 'black'
+            n.style = "filled"
+        elif lenp > 1 and loop:
             #Color of the loop
             n.fillcolor = 'blue'
             n.style = "filled"
@@ -91,9 +95,6 @@ class AngrAsm(Content):
             n.style = "filled"
         elif insns[len(insns)-1].mnemonic == "call":
             n.fillcolor = 'red'
-            n.style = "filled"
-        elif insns[len(insns)-1].mnemonic == "ret":
-            n.fillcolor = 'black'
             n.style = "filled"
         else:
             n.fillcolor = 'purple'
